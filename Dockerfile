@@ -11,6 +11,8 @@ RUN apt-get update -qq && \
 RUN mkdir /app_name
 ##作業ディレクトリ名をAPP_ROOTに割り当てて、以下$APP_ROOTで参照
 ENV APP_ROOT /app_name
+ENV RUBYOPT -EUTF-8
+ENV LANG C.UTF-8
 WORKDIR $APP_ROOT
 
 # ホスト側（ローカル）のGemfileを追加する（ローカルのGemfileは【３】で作成）
