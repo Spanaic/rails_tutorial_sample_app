@@ -53,7 +53,7 @@ class User < ApplicationRecord
 
   # 有効化用のメールを送信する
   def send_activation_email
-    UserMailer.account_activation(self).deliver.now
+    UserMailer.account_activation(self).deliver_now
   end
 
   private
