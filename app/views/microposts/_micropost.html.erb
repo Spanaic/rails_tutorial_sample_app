@@ -1,0 +1,15 @@
+<li id="micropost-<%= micropost.id %>"> 　<!--いいね機能の時も同じ様にidを切り換えることで処理できる-->
+  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %> <!-- gravatar_forはurlを戻り値として返すため-->
+  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
+  <span class="content">
+    <%= micropost.content %>
+    <%= image_tag micropost.picture.url if micropost.picture? %>
+  </span>
+  <span class="timestamp">
+    Posted<%= time_ago_in_words(micropost.created_at) %> ago. <!-- どれくらい前の投稿かを表す -->
+    <% if current_user?(micropost.user) %>
+      <%= link_to "delete", micropost, method: :delete,
+                  data: {confirm: "You sure?"} %>
+      <% end %>
+  </span>
+</li>
